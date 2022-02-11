@@ -1,4 +1,4 @@
-package model;
+package abstractBuilderPattern.builder;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -14,7 +14,6 @@ public abstract class BaseObject {
     protected UUID modifiedBy;
 
     protected BaseObject(BaseObjectBuilder<?> baseObjectBuilder) {
-
         this.tenantUuid = baseObjectBuilder.tenantUuid;
         this.uuid = baseObjectBuilder.uuid == null ? UUID.randomUUID() : baseObjectBuilder.uuid;
         this.id = baseObjectBuilder.id;
@@ -35,43 +34,36 @@ public abstract class BaseObject {
         private UUID modifiedBy;
 
         public T withTenantUuid(UUID tenantUuid) {
-
             this.tenantUuid = tenantUuid;
             return self();
         }
 
         public T withUuid(UUID uuid) {
-
             this.uuid = uuid;
             return self();
         }
 
         public T withId(String id) {
-
             this.id = id;
             return self();
         }
 
         public T withCreatedAt(LocalDateTime createdAt) {
-
             this.createdAt = createdAt;
             return self();
         }
 
         public T withCreateBy(UUID createBy) {
-
             this.createBy = createBy;
             return self();
         }
 
         public T withModifiedAt(LocalDateTime modifiedAt) {
-
             this.modifiedAt = modifiedAt;
             return self();
         }
 
         public T withModifiedBy(UUID modifiedBy) {
-
             this.modifiedBy = modifiedBy;
             return self();
         }

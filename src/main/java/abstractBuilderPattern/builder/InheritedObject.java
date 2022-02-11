@@ -1,4 +1,4 @@
-package model;
+package abstractBuilderPattern.builder;
 
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -11,7 +11,6 @@ public class InheritedObject extends BaseObject{
 
     // private Constructor
     private InheritedObject(Builder builder) {
-
         super(builder);
         this.name = builder.name;
     }
@@ -27,20 +26,17 @@ public class InheritedObject extends BaseObject{
         private String name;
 
         public Builder withName(String name) {
-
             this.name = name;
             return this;
         }
 
         @Override
         public InheritedObject build() {
-
             return new InheritedObject(this);
         }
 
         @Override
         protected Builder self() {
-
             return this;
         }
     }

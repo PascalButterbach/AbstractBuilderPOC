@@ -1,18 +1,23 @@
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.InheritedObject;
+import abstractBuilderPattern.builder.InheritedObject;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class AbstractBuilderBlueprint {
+public class RegularBuilder {
     public static void main(String[] args) throws JsonProcessingException {
 
-        InheritedObject inhObj = InheritedObject.builder()
-                .withUuid(UUID.randomUUID())
-                .withId("some ID")
+        InheritedObject.builder()
                 .withTenantUuid(UUID.randomUUID())
                 .withCreateBy(UUID.randomUUID())
+                .build();
+
+        InheritedObject inhObj = InheritedObject.builder()
+                .withTenantUuid(UUID.randomUUID())
+                .withCreateBy(UUID.randomUUID())
+                .withUuid(UUID.randomUUID())
+                .withId("some ID")
                 .withCreatedAt(LocalDateTime.now())
                 .withModifiedBy(UUID.randomUUID())
                 .withModifiedAt(LocalDateTime.now())
@@ -23,8 +28,9 @@ public class AbstractBuilderBlueprint {
 
 
         inhObj = InheritedObject.builder()
-                .withName("some Name")
                 .withTenantUuid(UUID.randomUUID())
+                .withCreateBy(UUID.randomUUID())
+                .withName("some Name")
                 .build();
 
         System.out.println("minimalistic obj " + inhObj);
